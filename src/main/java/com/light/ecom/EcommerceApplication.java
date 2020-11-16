@@ -24,9 +24,9 @@ public class EcommerceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Category cat1 = new Category(null,"Computers",null,null);
-		Category cat2 = new Category(null,"Phones",null,null);
-		Category cat3 = new Category(null,"Printers",null,null);
+		Category cat1 = new Category(null,"Computers",null,null,null);
+		Category cat2 = new Category(null,"Phones",null,null,null);
+		Category cat3 = new Category(null,"Printers",null,null,null);
 		catRep.save(cat1);
 		catRep.save(cat2);
 		catRep.save(cat3);
@@ -41,6 +41,7 @@ public class EcommerceApplication implements CommandLineRunner {
 						p.setPromotion(rnd.nextBoolean());
 						p.setSelected(rnd.nextBoolean());
 						p.setCategory(c);
+						p.setPhotoName("Unknown.png");
 						productRep.save(p);
 
 					}
