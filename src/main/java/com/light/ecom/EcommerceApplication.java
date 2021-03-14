@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import java.util.Random;
 
@@ -18,12 +19,15 @@ public class EcommerceApplication implements CommandLineRunner {
 	private ProductRepository productRep;
 	@Autowired
 	private CategoryRepository catRep;
+	@Autowired
+	private RepositoryRestConfiguration repositoryRestConfiguration;
 	public static void main(String[] args) {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		repositoryRestConfiguration.exposeIdsFor(Product.class);
 		Category cat1 = new Category(null,"Computers",null,null,null);
 		Category cat2 = new Category(null,"Phones",null,null,null);
 		Category cat3 = new Category(null,"Printers",null,null,null);
